@@ -8,18 +8,21 @@ export default function PostCard({ post }) {
           {new Date(post.createdAt).toLocaleDateString("ja-JP")}
         </p>
         <div className="flex gap-2">
-        {post.categories.map((category, index) => (
-          <span
-            key={index}
-            className="text-blue-700 border border-blue-700 text-xs px-2 py-1 rounded font-medium"
-          >
-            {category}
-          </span>
-        ))}
+          {post.categories.map((category, index) => (
+            <span
+              key={index}
+              className="text-blue-700 border border-blue-700 text-xs px-2 py-1 rounded font-medium"
+            >
+              {category}
+            </span>
+          ))}
+        </div>
       </div>
-      </div>
-      <p className="text-2xl mb-4 mt-2 font-semibold text-left">{post.title}</p>
-      <p className="text-m text-left mb-3 font-medium">{post.content}</p>
+      <h1 className="text-2xl mb-4 mt-2 font-semibold text-left">{post.title}</h1>
+      <div
+        className="text-m text-left mb-3 font-medium"
+        dangerouslySetInnerHTML={{ __html: post.content }} 
+      />
     </div>
   );
-};
+}
