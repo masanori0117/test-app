@@ -20,8 +20,8 @@ export default function PostCard({ post }) {
       </div>
       <h1 className="text-2xl mb-4 mt-2 font-semibold text-left">{post.title}</h1>
       <div
-        className="text-m text-left mb-3 font-medium"
-        dangerouslySetInnerHTML={{ __html: post.content }} 
+        className="text-m text-left mb-3 font-medium line-clamp-2"
+        dangerouslySetInnerHTML={{ __html: post.content }}
       />
     </div>
   );
