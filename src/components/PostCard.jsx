@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function PostCard({ post }) {
   return (
-    <Link className="block text-inherit hover:text-inherit no-underline" to={`/post/${post.id}`}>
+    <Link className="block text-inherit hover:text-inherit no-underline" to={`/posts/${post.id}`}>
       <div className="border border-gray-300 p-4 mb-6 shadow-sm flex flex-col">
         <div className="flex justify-between">
           <p className="text-sm text-gray-500 mb-2">

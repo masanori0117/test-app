@@ -1,8 +1,8 @@
-export default function PostDetailImage({ imageName }) {
-  if (!imageName) return null;
+export default function PostDetailImage({ imageUrl }) {
+  if (!imageUrl) return null;
   return (
     <img
-      src={imageName}
+      src={imageUrl}
       alt="投稿画像"
       className="w-full h-auto mb-4"
     />

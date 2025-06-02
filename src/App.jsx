@@ -12,7 +12,7 @@ export default function App() {
         <main className="max-w-3xl mx-auto mt-20 px-4">
           <Routes>
             <Route path="/" element={<PostList />} />
-            <Route path="/post/:id" element={<PostDetail />} />
+            <Route path="/posts/:id" element={<PostDetail />} />
           </Routes>
         </main>
       </div>

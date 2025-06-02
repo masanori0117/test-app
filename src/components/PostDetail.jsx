@@ -13,7 +13,7 @@ export default function PostDetail() {
 
   return (
     <div className="p-4 mb-6 flex flex-col">
-      <PostDetailImage imageName={post.thumbnailUrl} />
+      <PostDetailImage imageUrl={post.thumbnailUrl} />
       <div className="flex justify-between">
         <p className="text-sm text-gray-500 mb-2">
           {new Date(post.createdAt).toLocaleDateString("ja-JP")}
