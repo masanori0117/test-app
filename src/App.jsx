@@ -1,19 +1,21 @@
 import './App.css'
-import { posts } from './data/posts'
-import PostCard from './components/PostCard'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Header from './components/Header'
+import PostList from './components/PostList'
+import PostDetail from './components/PostDetail'
 
-const App = () => {
+export default function App() {
   return (
-    <div className="min-h-screen">
-      <Header />
-      <main className="max-w-3xl mx-auto mt-20 px-4">
-        {posts.map(post => (
-          <PostCard key={post.id} post={post} />
-        ))}
-      </main>
+    <div className='App'>
+      <div className="min-h-screen">
+        <Header />
+        <main className="max-w-3xl mx-auto mt-20 px-4">
+          <Routes>
+            <Route path="/" element={<PostList />} />
+            <Route path="/posts/:id" element={<PostDetail />} />
+          </Routes>
+        </main>
+      </div>
     </div>
   );
-};
-
-export default App;
+}
