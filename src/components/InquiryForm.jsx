@@ -24,16 +24,23 @@ export default function InquiryForm() {
     const email = formData.email.trim();
     const content = formData.content.trim();
 
-    if (!name || name.length > 30) {
-        newErrors.name = '名前は必須です(30文字内で入力してください)';
+    if (!name) {
+      newErrors.name = '名前は必須です';
+    } else if (name.length > 30) {
+      newErrors.name = '名前は30文字以内で入力してください';
     }
 
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        newErrors.email = 'メールアドレスは必須です(メールアドレスは正しい形式で入力してください)';
+    if (!email) {
+      newErrors.email = 'メールアドレスは必須です';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        console.log('メールアドレスバリデーション:', email, /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email));
+        newErrors.email = 'メールアドレスは正しい形式で入力してください';
     }
 
-    if (!content || content.length > 500) {
-        newErrors.content = '本文は必須です(500文字以内で入力してください)';
+    if (!content) {
+      newErrors.content = '本文は必須です';
+    } else if (content.length > 500) {
+      newErrors.content = '本文は500文字以内で入力してください';
     }
 
     setErrors(newErrors);
@@ -101,7 +108,7 @@ export default function InquiryForm() {
       {isSubmitting && (
         <p className="text-gray-600 mb-4 text-center">送信中...</p>
       )}
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} noValidate>
         <div className="flex items-center gap-16 mb-6">
           <label className="w-40 text-left font-bold" htmlFor="name">お名前</label>
           <div className="w-full">
@@ -112,6 +119,7 @@ export default function InquiryForm() {
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
+                disabled={isSubmitting}
             />
             {errors.name && <p className="text-left text-red-700 text-sm mt-1">{errors.name}</p>}
           </div>
@@ -121,11 +129,12 @@ export default function InquiryForm() {
           <div className="w-full">
             <input
                 className="border border-gray-300 rounded-lg p-4 w-full"
-                type="email"
+                type="text"
                 id="email"
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
+                disabled={isSubmitting}
             />
             {errors.email && <p className="text-left text-red-700 text-sm mt-1">{errors.email}</p>}
           </div>
@@ -139,7 +148,8 @@ export default function InquiryForm() {
               id="content"
               name="content"
               value={formData.content}
-             onChange={handleChange}
+              onChange={handleChange}
+              disabled={isSubmitting}
             />
             {errors.content && <p className="text-left text-red-700 text-sm mt-1">{errors.content}</p>}
           </div>
